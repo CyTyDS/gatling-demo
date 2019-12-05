@@ -50,5 +50,9 @@ class RecordedSimulation extends Simulation {
             http("request_10")
 			.get("/computers?p=7")))
 
-	setUp(scn.inject(atOnceUsers(1))).protocols(httpProtocol)
+	setUp(scn
+		.inject(atOnceUsers(1), //1
+				rampUsersPerSec(10) to(50) during(2 minutes) //2
+				)
+		.protocols(httpProtocol))
 }
