@@ -51,8 +51,8 @@ class RecordedSimulation extends Simulation {
 			.get("/computers?p=7")))
 
 	setUp(scn
-		.inject(atOnceUsers(1), //1
-				rampUsersPerSec(10) to(50) during(2 minutes) //2
-				)
+		.inject(atOnceUsers(1), //1 Un seul utilisateur virtuel exécute le scénario
+			rampUsersPerSec(10) to(50) during(2 minutes) //2 La simulation commence avec un ajout de 10 utilisateurs par secondes, puis monte progressivement jusqu'à 50, et ce pendant 2 minutes.
+			)
 		.protocols(httpProtocol))
 }
